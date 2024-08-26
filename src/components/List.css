@@ -1,0 +1,22 @@
+/* src/styles/ListComponent.css */
+.list-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .list-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  .list-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .list-container li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
