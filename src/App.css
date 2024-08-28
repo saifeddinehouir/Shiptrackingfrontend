@@ -1,120 +1,135 @@
-/* App.css */
-
 body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    height: 100%;
-    width: 100%;
-    overflow: hidden; /* Prevent scrolling */
-  }
-  
-  .App {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  .main-content {
-    display: flex;
-    flex: 1;
-  }
-  
-  .content-area {
-    flex: 1;
-    overflow-y: auto;
-  }
-  
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    background-color: #2c3e50; /* Example color */
-    height: 40px;
-  }
-  
-  .app-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .app-info img {
-    width: 25px;
-    height: 25px;
-    margin-right: 8px;
-  }
-  
-  .app-name {
-    font-size: 16px;
-    color: white;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .links {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .links a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
-  .search input[type="text"] {
-    padding: 4px 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    width: 180px;
-    height: 24px;
-  }
-  
-  .search input[type="text"]::placeholder {
-    font-size: 12px;
-  }
-  
-  .search {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .search-icon {
-    width: 16px;
-    height: 16px;
-  }
-  
-  .sidebar {
-    width: 200px;
-    background-color: #34495e;
-    padding: 10px;
-    box-sizing: border-box;
-    color: white;
-    height: 100vh; /* Ensure it fills the height */
-    overflow-y: auto;
-  }
-  .list-container {
-    padding: 20px;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+* {
+  box-sizing: border-box; /* Apply box-sizing to all elements */
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden; /* Ensure content area and map fit within available space */
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px; /* Adjust padding if needed */
+  background-color: #2c3e50; /* Example color */
+  height: 40px;
+  z-index: 1; /* Ensure it stays above other content */
+}
+
+.app-info {
+  display: flex;
+  align-items: center;
+}
+
+.app-info img {
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+}
+
+.app-name {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.search input[type="text"] {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 180px;
+  height: 24px;
+}
+
+.search input[type="text"]::placeholder {
+  font-size: 12px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #34495e;
+  padding: 10px;
+  color: white;
+  height: 100vh; /* Ensure it fills the height */
+  overflow-y: auto;
+}
+
+.list-container {
+  padding: 20px;
 }
 
 .list-container h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
+  font-size: 24px;
+  margin-bottom: 15px;
 }
 
 .list-container ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .list-container li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
 }
 
 .list-container li strong {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+/* Map container styling */
+.map-container {
+  flex: 1;
+  height: 100%; /* Full height of the parent container */
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.map-container .leaflet-container {
+  height: 100%;
+  width: 100%;
+  margin: 0; /* Ensure no extra space */
+  padding: 0; /* Ensure no extra space */
 }

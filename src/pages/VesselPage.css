@@ -1,0 +1,49 @@
+.vessel-page {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+  gap: 20px; /* Space between the map and the table */
+  padding: 20px; /* Padding to ensure space around the content */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.info-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align table to start of the container */
+}
+
+table {
+  border-collapse: collapse;
+  
+  width: auto; /* Auto width for the vertical table */
+  margin-right: -500px;
+}
+
+table, th, td {
+  border: 2px solid rgba(52, 52, 53, 0.7);
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  text-align: center;
+}
