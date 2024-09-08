@@ -11,7 +11,7 @@ const SearchBar = () => {
     const trimmedQuery = searchQuery.trim();
     if (trimmedQuery) {
       try {
-        const response = await fetch(`http://localhost:5000/vessel/${encodeURIComponent(trimmedQuery)}`);
+        const response = await fetch(`http://localhost:8080/api/vessel/${encodeURIComponent(trimmedQuery)}`);
         if (response.ok) {
           const data = await response.json();
           navigate(`/vessel/${trimmedQuery}`, { state: { vessel: data } });
@@ -30,7 +30,7 @@ const SearchBar = () => {
       <form onSubmit={handleSearch}>
         <input
           type="text"
-          placeholder="Search by Name or MMSI "
+          placeholder="Search by MMSI "
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />

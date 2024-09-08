@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -10,7 +10,7 @@ const MapComponent = () => {
   useEffect(() => {
     const fetchVessels = async () => {
       try {
-        const response = await fetch('http://localhost:5000/vessel'); // Replace with your backend endpoint
+        const response = await fetch('http://localhost:8080/api/vessel'); // Replace with your backend endpoint
         const data = await response.json();
         setVessels(data);
       } catch (error) {
@@ -21,7 +21,7 @@ const MapComponent = () => {
     fetchVessels();
   }, []);
 
-  const createArrowIcon = (rotation) => {
+  const createArrowIcon = useCallback((rotation) => {
     return L.divIcon({
       html: `
         <svg width="16" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="transform: rotate(${rotation}deg); transform-origin: 50% 50%;">
@@ -31,7 +31,7 @@ const MapComponent = () => {
       iconSize: [24, 24],
       className: 'vessel-icon',
     });
-  };
+  });
   
   
   
