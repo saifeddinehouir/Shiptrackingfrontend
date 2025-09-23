@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, LayersControl, Overlay, Circle, LayerGroup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MapComponent.css';
 
 const MapComponent = () => {
   const [vessels, setVessels] = useState([]);
+  const center = [51.505, -0.09]
 
   useEffect(() => {
     const fetchVessels = async () => {
@@ -41,14 +42,24 @@ const MapComponent = () => {
         center={[45, -0.19]}
         zoom={2}
         minZoom={2}
-        maxZoom={13}
+        maxZoom={16}
         style={{ height: '100vh', width: '100%' }}
         attributionControl={false}
-      >
-        <TileLayer
+      >  
+        <TileLayer 
+         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'/>
+        
+        <LayersControl>
+           <LayersControl.Overlay name="normal">
+              <TileLayer
           url="https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png"
-          
         />
+           </LayersControl.Overlay>  
+            <LayersControl.Overlay name="verynotnormal">
+              <TileLayer 
+         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'/>
+           </LayersControl.Overlay>  
+        </LayersControl>  
         {vessels.map(vessel => (
           <Marker
             key={vessel.mmsi}
@@ -57,6 +68,7 @@ const MapComponent = () => {
           >
           </Marker>
         ))}
+
       </MapContainer>
     </div>
   );
