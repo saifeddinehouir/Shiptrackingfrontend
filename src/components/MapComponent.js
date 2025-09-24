@@ -46,6 +46,7 @@ const MapComponent = () => {
         style={{ height: '100vh', width: '100%' }}
         attributionControl={false}
       >  
+         
         <TileLayer 
          url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'/>
         
