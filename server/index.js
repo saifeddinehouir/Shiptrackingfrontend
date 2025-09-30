@@ -1,3 +1,39 @@
+const PORT = process.env.PORT || 5000
+const express = require('express')
+const http = require('http')
+const socketIo = require('socket.io')
+
+const app = express()
+const server = http.createServer(app)
+const io = socketIo(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+})
+
+io.on("connection", (socket) => {
+    console.log("New client connected",socket.id)
+    socket.join("aisRoom");
+    socket.on("disconnect", (reason) => {
+        console.log(`Client disconnected: ${reason}`)
+    })
+
+    socket.on("aisData", (data) => {
+        io.emit("aisData", data) // Broadcast the AIS data to all connected clients
+    })
+})
+
+setInterval(() => {
+    io.to("aisRoom").emit("time", new Date().toISOString())
+}, 1000)
+
+server.listen(PORT, err => {if(err) console.log(err);
+    console.log(`Server listening on port ${PORT}`)
+});
+
+// Connect to the AIS data stream   
+
 const WebSocket = require('ws');
 const socket = new WebSocket("wss://stream.aisstream.io/v0/stream");
 
