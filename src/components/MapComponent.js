@@ -3,24 +3,38 @@ import { MapContainer, TileLayer, Marker, LayersControl, Overlay, Circle, LayerG
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MapComponent.css';
+import { io } from 'socket.io-client';
 
 const MapComponent = () => {
   const [vessels, setVessels] = useState([]);
+  const [aisData, setAisData] = React.useState('fetching...');
+  
+  useEffect(() => {
+    const socket =  io('http://localhost:5000');
+    socket.on('connect',()=>console.log(socket.id));
+    socket.on('connect_error', () => {
+      setTimeout(() => socket.connect(), 5000);
+    });
+    socket.on('aisData', (data) => setAisData(data));
+    socket.on('disconnect',()=>setAisData("disconnected"));
+    return () => socket.close();
+  }, []);
+  console.log(aisData);
   const center = [51.505, -0.09]
 
-  useEffect(() => {
-    const fetchVessels = async () => {
-      try {
-        const response = await fetch('http://localhost:8080/api/vessel'); // Replace with your backend endpoint
-        const data = await response.json();
-        setVessels(data);
-      } catch (error) {
-        console.error('Error fetching vessels:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchVessels = async () => {
+  //     try {
+  //       const response = await fetch('http://localhost:8080/api/vessel'); // Replace with your backend endpoint
+  //       const data = await response.json();
+  //       setVessels(data);
+  //     } catch (error) {
+  //       console.error('Error fetching vessels:', error);
+  //     }
+  //   };
 
-    fetchVessels();
-  }, []);
+  //   fetchVessels();
+  // }, []);
 
   const createArrowIcon = useCallback((rotation) => {
     return L.divIcon({

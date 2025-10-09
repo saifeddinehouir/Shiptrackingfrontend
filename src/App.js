@@ -11,19 +11,7 @@ import VesselDetails from './components/VesselDetail'
 import io from 'socket.io-client';
 
 function App() {
-  const [aisData, setAisData] = React.useState('fetching...');
   
-  React.useEffect(() => {
-    const socket =  io('http://localhost:5000');
-    socket.on('connect',()=>console.log(socket.id));
-    socket.on('connect_error', () => {
-      setTimeout(() => socket.connect(), 5000);
-    });
-    socket.on('aisData', (data) => setAisData(data));
-    socket.on('disconnect',()=>setAisData("disconnected"));
-    return () => socket.close();
-  }, []);
-  console.log(aisData);
   return (
     <div className="App">
         <SearchBar /> {/* Add the SearchBar here */}
