@@ -1,25 +1,54 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, LayersControl, Overlay, Circle, LayerGroup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MapComponent.css';
+import { io } from 'socket.io-client';
+import FilterPanel from './FilterPanel';
 
 const MapComponent = () => {
   const [vessels, setVessels] = useState([]);
-
+  const [aisData, setAisData] = React.useState('fetching...');
   useEffect(() => {
-    const fetchVessels = async () => {
-      try {
-        const response = await fetch('http://localhost:8080/api/vessel'); // Replace with your backend endpoint
-        const data = await response.json();
-        setVessels(data);
-      } catch (error) {
-        console.error('Error fetching vessels:', error);
+    const socket =  io('http://localhost:5000');
+    socket.on('connect',()=>console.log(socket.id));
+    socket.on('connect_error', () => {
+      setTimeout(() => socket.connect(), 5000);
+    });
+    socket.on('aisData', (data) => {
+      setVessels((prevVessels) => {
+      // Vérifie si ce MMSI existe déjà (pour éviter les doublons)
+      const exists = prevVessels.some(v => v.MMSI === data.MMSI);
+      if (exists) {
+        // Met à jour la position si le navire existe déjà
+        return prevVessels.map(v =>
+          v.MMSI === data.MMSI ? data : v
+        );
+      } else {
+        // Ajoute le nouveau navire
+        return [...prevVessels, data];
       }
-    };
-
-    fetchVessels();
+    });
+      });
+    socket.on('disconnect',()=>setAisData("disconnected"));
+    return () => socket.close();
   }, []);
+  
+  const center = [51.505, -0.09]
+
+  // useEffect(() => {
+  //   const fetchVessels = async () => {
+  //     try {
+  //       const response = await fetch('http://localhost:8080/api/vessel'); // Replace with your backend endpoint
+  //       const data = await response.json();
+  //       
+  //     } catch (error) {
+  //       console.error('Error fetching vessels:', error);
+  //     }
+  //   };
+
+  //   fetchVessels();
+  // }, []);
 
   const createArrowIcon = useCallback((rotation) => {
     return L.divIcon({
@@ -34,21 +63,32 @@ const MapComponent = () => {
   });
   
   
-  
   return (
     <div className='map-container'>
       <MapContainer
         center={[45, -0.19]}
         zoom={2}
         minZoom={2}
-        maxZoom={13}
+        maxZoom={16}
         style={{ height: '100vh', width: '100%' }}
         attributionControl={false}
-      >
-        <TileLayer
+      >  
+         
+        <TileLayer 
+         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'/>
+        
+        <LayersControl>
+           <LayersControl.Overlay name="normal">
+              <TileLayer
           url="https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png"
-          
         />
+           </LayersControl.Overlay>  
+            <LayersControl.Overlay name="verynotnormal">
+              <TileLayer 
+         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'/>
+           </LayersControl.Overlay>  
+        </LayersControl>  
+        
         {vessels.map(vessel => (
           <Marker
             key={vessel.mmsi}
@@ -57,7 +97,9 @@ const MapComponent = () => {
           >
           </Marker>
         ))}
+
       </MapContainer>
+      <FilterPanel/>
     </div>
   );
 };
