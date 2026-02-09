@@ -1,0 +1,66 @@
+[
+    {
+        "id": "1",
+        "name": "Port of Singapore",
+        "country": "Singapore",
+        "activeVessels": 450,
+        "capacity": "High",
+        "status": "Optimal"
+    },
+    {
+        "id": "2",
+        "name": "Port of Shanghai",
+        "country": "China",
+        "activeVessels": 820,
+        "capacity": "Very High",
+        "status": "Congested"
+    },
+    {
+        "id": "3",
+        "name": "Port of Rotterdam",
+        "country": "Netherlands",
+        "activeVessels": 120,
+        "capacity": "High",
+        "status": "Optimal"
+    },
+    {
+        "id": "4",
+        "name": "Jebel Ali Port",
+        "country": "UAE",
+        "activeVessels": 310,
+        "capacity": "High",
+        "status": "Smooth"
+    },
+    {
+        "id": "5",
+        "name": "Port of Hamburg",
+        "country": "Germany",
+        "activeVessels": 85,
+        "capacity": "Medium",
+        "status": "Maintenance"
+    },
+    {
+        "id": "6",
+        "name": "Port of Busan",
+        "country": "South Korea",
+        "activeVessels": 210,
+        "capacity": "High",
+        "status": "Optimal"
+    },
+    {
+        "id": "7",
+        "name": "Port of Antwerp",
+        "country": "Belgium",
+        "activeVessels": 95,
+        "capacity": "Medium",
+        "status": "Smooth"
+    },
+    {
+        "id": "8",
+        "name": "Port of Los Angeles",
+        "country": "USA",
+        "activeVessels": 150,
+        "capacity": "High",
+        "status": "Congested"
+    }
+]

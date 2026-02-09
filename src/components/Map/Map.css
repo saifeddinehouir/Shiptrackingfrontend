@@ -1,0 +1,215 @@
+.main-map-wrapper {
+    flex: 1;
+    /* Take remaining space in flex container */
+    height: 100vh;
+    position: relative;
+    background: #f8fafc;
+}
+
+.vessel-marker-container {
+    background: transparent !important;
+    border: none !important;
+}
+
+.vessel-icon-wrapper {
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vessel-tooltip {
+    padding: 6px 10px;
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #0f172a;
+    pointer-events: none;
+}
+
+.leaflet-tooltip {
+    background: white !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+.vessel-popup {
+    min-width: 200px;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.vessel-popup h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    color: #1e293b;
+}
+
+.vessel-popup p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #475569;
+}
+
+.vessel-popup hr {
+    border: 0;
+    border-top: 1px solid #e2e8f0;
+    margin: 8px 0;
+}
+
+/* Cluster styles refinement */
+.marker-cluster-small {
+    background-color: rgba(181, 226, 191, 0.6);
+}
+
+.marker-cluster-small div {
+    background-color: rgba(110, 204, 57, 0.6);
+}
+
+.marker-cluster-medium {
+    background-color: rgba(241, 211, 87, 0.6);
+}
+
+.marker-cluster-medium div {
+    background-color: rgba(240, 194, 12, 0.6);
+}
+
+.marker-cluster-large {
+    background-color: rgba(253, 156, 115, 0.6);
+}
+
+.marker-cluster-large div {
+    background-color: rgba(241, 128, 23, 0.6);
+}
+
+.marker-cluster {
+    background-clip: padding-box;
+    border-radius: 20px;
+}
+
+.marker-cluster div {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 15px;
+    font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.marker-cluster span {
+    line-height: 30px;
+}
+
+/* Vessel Cluster Customization */
+.vessel-cluster-container {
+    background: transparent !important;
+    border: none !important;
+}
+
+.vessel-cluster-wrapper {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cluster-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ef4444;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+}
+
+/* Marker Transitions */
+.leaflet-marker-icon {
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Map Controls (Follow Mode) */
+.map-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.control-btn {
+    background: white;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #475569;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-btn:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+
+.control-btn.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #2563eb;
+}
+
+/* Enhanced Tooltip Styles */
+.vessel-tooltip {
+    min-width: 140px;
+}
+
+.tooltip-header {
+    font-weight: 700;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    color: #1e293b;
+}
+
+.tooltip-row {
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+.tooltip-footer {
+    margin-top: 8px;
+    font-size: 10px;
+    color: #94a3b8;
+    text-align: right;
+    font-style: italic;
+}
+
+/* Zoom-aware Dot Styles */
+.vessel-dot-container {
+    background: transparent !important;
+    border: none !important;
+}
+
+.vessel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid white;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,72 @@
+[
+    {
+        "mmsi": 211281040,
+        "name": "MSC OSCAR",
+        "type": "Cargo",
+        "status": "Underway Using Engine",
+        "latitude": 51.5074,
+        "longitude": 0.1278,
+        "heading": 45,
+        "speed": 18.2,
+        "destination": "ROTTERDAM",
+        "eta": "2026-02-10T14:30:00Z",
+        "length": 395,
+        "width": 59
+    },
+    {
+        "mmsi": 235102568,
+        "name": "QUEEN MARY 2",
+        "type": "Passenger",
+        "status": "Underway Using Engine",
+        "latitude": 40.7128,
+        "longitude": -74.0060,
+        "heading": 270,
+        "speed": 22.5,
+        "destination": "NEW YORK",
+        "eta": "2026-02-11T08:00:00Z",
+        "length": 345,
+        "width": 41
+    },
+    {
+        "mmsi": 244670000,
+        "name": "MAERSK MC-KINNEY MOLLER",
+        "type": "Cargo",
+        "status": "Underway Using Engine",
+        "latitude": 35.6895,
+        "longitude": 139.6917,
+        "heading": 120,
+        "speed": 16.8,
+        "destination": "SHANGHAI",
+        "eta": "2026-02-12T12:00:00Z",
+        "length": 399,
+        "width": 59
+    },
+    {
+        "mmsi": 311000000,
+        "name": "VALIANT LADY",
+        "type": "Passenger",
+        "status": "Moored",
+        "latitude": 25.7617,
+        "longitude": -80.1918,
+        "heading": 0,
+        "speed": 0.0,
+        "destination": "MIAMI",
+        "eta": "2026-02-09T06:00:00Z",
+        "length": 278,
+        "width": 38
+    },
+    {
+        "mmsi": 431000000,
+        "name": "SHINYO MARU",
+        "type": "Tanker",
+        "status": "At Anchor",
+        "latitude": 34.6937,
+        "longitude": 135.5023,
+        "heading": 180,
+        "speed": 0.1,
+        "destination": "OSAKA",
+        "eta": "2026-02-09T18:00:00Z",
+        "length": 333,
+        "width": 60
+    }
+]
