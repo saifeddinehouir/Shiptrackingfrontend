@@ -1,66 +1,52 @@
 [
     {
-        "id": "1",
-        "name": "Port of Singapore",
-        "country": "Singapore",
-        "activeVessels": 450,
-        "capacity": "High",
-        "status": "Optimal"
+        "id": "port-london",
+        "name": "Port of London",
+        "coords": {
+            "lat": 51.5074,
+            "lng": 0.1278
+        },
+        "radius": 30,
+        "capacity": 10
     },
     {
-        "id": "2",
-        "name": "Port of Shanghai",
-        "country": "China",
-        "activeVessels": 820,
-        "capacity": "Very High",
-        "status": "Congested"
+        "id": "port-new-york",
+        "name": "Port of New York & New Jersey",
+        "coords": {
+            "lat": 40.7128,
+            "lng": -74.0060
+        },
+        "radius": 40,
+        "capacity": 15
     },
     {
-        "id": "3",
-        "name": "Port of Rotterdam",
-        "country": "Netherlands",
-        "activeVessels": 120,
-        "capacity": "High",
-        "status": "Optimal"
+        "id": "port-tokyo",
+        "name": "Port of Tokyo",
+        "coords": {
+            "lat": 35.6895,
+            "lng": 139.6917
+        },
+        "radius": 35,
+        "capacity": 12
     },
     {
-        "id": "4",
-        "name": "Jebel Ali Port",
-        "country": "UAE",
-        "activeVessels": 310,
-        "capacity": "High",
-        "status": "Smooth"
+        "id": "port-miami",
+        "name": "Port of Miami",
+        "coords": {
+            "lat": 25.7617,
+            "lng": -80.1918
+        },
+        "radius": 20,
+        "capacity": 8
     },
     {
-        "id": "5",
-        "name": "Port of Hamburg",
-        "country": "Germany",
-        "activeVessels": 85,
-        "capacity": "Medium",
-        "status": "Maintenance"
-    },
-    {
-        "id": "6",
-        "name": "Port of Busan",
-        "country": "South Korea",
-        "activeVessels": 210,
-        "capacity": "High",
-        "status": "Optimal"
-    },
-    {
-        "id": "7",
-        "name": "Port of Antwerp",
-        "country": "Belgium",
-        "activeVessels": 95,
-        "capacity": "Medium",
-        "status": "Smooth"
-    },
-    {
-        "id": "8",
-        "name": "Port of Los Angeles",
-        "country": "USA",
-        "activeVessels": 150,
-        "capacity": "High",
-        "status": "Congested"
+        "id": "port-osaka",
+        "name": "Port of Osaka",
+        "coords": {
+            "lat": 34.6937,
+            "lng": 135.5023
+        },
+        "radius": 25,
+        "capacity": 10
     }
 ]

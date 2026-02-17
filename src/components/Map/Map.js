@@ -5,10 +5,21 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import { createVesselIcon, getVesselColor } from './VesselIcon';
+import PortZone from './PortZone';
 import './Map.css';
 
-const VesselMap = React.memo(({ vessels, onVesselClick, selectedVesselMmsi, baseLayer = 'street', showWind = false }) => {
+const VesselMap = React.memo(({
+    vessels,
+    ports = [],
+    selectedPortId,
+    onPortClick,
+    onVesselClick,
+    selectedVesselMmsi,
+    baseLayer = 'street',
+    showWind = false
+}) => {
     const mapContainerRef = useRef(null);
+    const [mapInstance, setMapInstance] = React.useState(null);
     const mapRef = useRef(null);
     const clusterGroupRef = useRef(null);
     const tileLayersRef = useRef({});
@@ -96,6 +107,7 @@ const VesselMap = React.memo(({ vessels, onVesselClick, selectedVesselMmsi, base
 
         map.addLayer(clusterGroup);
         mapRef.current = map;
+        setMapInstance(map);
         clusterGroupRef.current = clusterGroup;
 
         // Optional: Manual zoom listener to update all icons at once (Density Awareness)
@@ -238,7 +250,18 @@ const VesselMap = React.memo(({ vessels, onVesselClick, selectedVesselMmsi, base
 
     return (
         <div className="main-map-wrapper">
-            <div ref={mapContainerRef} style={{ height: '100%', width: '100%' }} />
+            <div ref={mapContainerRef} style={{ height: '100%', width: '100%' }}>
+                {/* Port Zones */}
+                {ports.map(port => (
+                    <PortZone
+                        key={port.id}
+                        port={port}
+                        isSelected={selectedPortId === port.id}
+                        onClick={onPortClick}
+                        map={mapInstance}
+                    />
+                ))}
+            </div>
 
         </div>
     );
